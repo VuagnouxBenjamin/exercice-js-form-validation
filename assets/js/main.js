@@ -16,9 +16,7 @@ const codePostal = document.getElementById("codePostalInput");
 const ville = document.getElementById("villeInput");
 const email = document.getElementById("emailInput");
 const telephone = document.getElementById("telephoneInput");
-// select
-const environnement = document.getElementById("environnementSelect");
-const showSelect = document.getElementById("showSelect");
+
 // Buttons
 const envoyer = document.getElementById("envoyer");
 const effacer = document.getElementById("effacer");
@@ -30,11 +28,30 @@ const codePostalErr = document.getElementById("codePostalErr");
 const villeErr = document.getElementById("villeErr");
 const emailErr = document.getElementById("emailErr");
 
+// select
+const environnement = document.getElementById("environnementSelect");
+const showSelect = document.getElementById("showSelect");
+// select options 
+
 
 // --- DECLARATION DES FONCTIONS
 
+// -- Gestion du select 
+
+// on click sur l 'option => display none => display block dans le selecteur.
+
+environnement.addEventListener("change", e => {
+    if (environnement.value != "Choisissez...") {
+        showSelect.innerHTML += `<option selected>${environnement.value}</option>`;
+    }
+})
+
+
+
+// -- form validation
+
 form.addEventListener('submit', (e) => {
-    //Message d'erreur si les valeurs sont fausses. 
+    //Message d'erreur si les valeurs sont incorrectes. 
     if (societe.value.length <= 1) {
         societeErr.innerHTML = "Le nom de la société doit être renseigné";
         e.preventDefault()
@@ -60,7 +77,7 @@ form.addEventListener('submit', (e) => {
         e.preventDefault()
     };
 
-    //Retrait du message d'erreur si les valeurs sont bonnes. 
+    //Retrait du message d'erreur si les valeurs sont correctes. 
     if (societe.value.length >= 1) {
         societeErr.innerHTML = "";
     };
