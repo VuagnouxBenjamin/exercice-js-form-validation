@@ -38,11 +38,10 @@ const showSelect = document.getElementById("showSelect");
 
 // -- Gestion du select 
 
-// on click sur l 'option => display none => display block dans le selecteur.
-
+// dès que la valeur du select change, on crée une <option selected> dans le deuxième champ. 
 environnement.addEventListener("change", e => {
     if (environnement.value != "Choisissez...") {
-        showSelect.innerHTML += `<option selected>${environnement.value}</option>`;
+        showSelect.innerHTML += `<option value="${environnement.value}" selected>${environnement.value}</option>`;
     }
 })
 
